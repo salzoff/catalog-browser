@@ -1,14 +1,12 @@
 <template>
     <div id="app">
-        <header>
-            <h1>NBC Catalog</h1>
-        </header>
-        <div class="container">
-            <catalog-form @submit="onSubmit" :form-data="formData" />
-        </div>
+        <b-navbar class="bg-info text-white container-fluid nbc-nav">
+            <strong class="app-title">NBC Viewer</strong>
+            <catalog-form @submit="onSubmit" :parameters="parameters" />
+        </b-navbar>
         <div>
             <catalog-browser
-                :form-data="formData"
+                :parameters="parameters"
                 @updateParams="onUpdateParams"
             />
         </div>
@@ -24,16 +22,23 @@ export default {
     components: { CatalogBrowser, CatalogForm },
     data: function() {
         return {
-            formData: {}
+            parameters: {}
         };
     },
     methods: {
         onSubmit(data) {
-            this.formData = Object.assign({}, this.formData, data);
+            this.parameters = Object.assign({}, this.parameters, data);
         },
         onUpdateParams(params) {
-            this.formData = Object.assign({}, this.formData, params);
+            this.parameters = Object.assign({}, this.parameters, params);
         }
     }
 };
 </script>
+
+<style lang="scss" scoped>
+    .app-title {
+        font-size: 2em;
+        flex: 1;
+    }
+</style>

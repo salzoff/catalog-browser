@@ -35,5 +35,6 @@
     .catalog-item {
         width: 100%;
         display: block;
+        cursor: pointer;
     }
 </style>

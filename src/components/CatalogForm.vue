@@ -1,19 +1,19 @@
 <template>
-    <b-form inline>
+    <b-form inline style="flex: 3">
         <b-form-group label="Id">
             <b-form-input v-model="giataId" type="number" />
         </b-form-group>
         <b-form-group label="Tour operator code">
             <b-form-input v-model="tourOperatorCode" />
         </b-form-group>
-        <b-form-group label="date">
+        <b-form-group label="Date">
             <b-form-input v-model="date" type="date" />
         </b-form-group>
         <b-form-group label="Language">
             <b-form-input v-model="lang" />
         </b-form-group>
         <b-form-group label="&nbsp;">
-            <b-button size="sm" variant="primary" @click="onSubmit">Search</b-button>
+            <b-button size="md" variant="light" @click="onSubmit">Search</b-button>
         </b-form-group>
     </b-form>
 </template>
@@ -23,7 +23,7 @@
     export default {
         name: 'catalog-form',
         props: {
-            formData: {
+            parameters: {
                 type: Object
             }
         },
@@ -31,29 +31,28 @@
             return {
                 giataId: '',
                 tourOperatorCode: '',
-                date: new Date(),
+                date: null,
                 lang: ''
             };
         },
         methods: {
             onSubmit() {
-                console.log('click');
                 this.$emit('submit', {
                     giataId: parseInt(this.giataId),
                     tourOperatorCode: this.tourOperatorCode,
-                    date: moment(this.date).format('YYYY-MM-DD'),
+                    date: this.date ? moment(this.date).format('YYYY-MM-DD') : '',
                     lang: this.lang
                 });
             }
         },
         watch: {
-            formData: {
+            parameters: {
                 deep: true,
-                handler(formData) {
-                    this.giataId = formData.giataId;
-                    this.tourOperatorCode = formData.tourOperatorCode;
-                    this.date = formData.date;
-                    this.lang = formData.lang;
+                handler(parameters) {
+                    this.giataId = parameters.giataId;
+                    this.tourOperatorCode = parameters.tourOperatorCode;
+                    this.date = parameters.date;
+                    this.lang = parameters.lang;
                 }
             }
         }

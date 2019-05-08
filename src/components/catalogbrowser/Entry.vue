@@ -1,10 +1,11 @@
 <template>
     <div>
-        <h3>{{ entry.HotelName }} {{ entry.CatalogHotelId }}</h3>
+        <h3>{{ entry.HotelName }}</h3>
         <div class="image-container clearfix">
             <b-carousel  :indicators="true" background="#e4e4e4">
                 <b-carousel-slide
                     v-for="(image, index) in entry.Images.Large"
+                    :key="index"
                 >
                     <img slot="img" :src="image.Url" class="img img-responsive" />
                 </b-carousel-slide>
@@ -15,16 +16,16 @@
 </template>
 
 <script>
-    import Climate from './Climate';
-    export default {
-        components: {Climate},
-        props: {
-            entry: {
-                type: Object,
-                required: true
-            }
+import Climate from './Climate';
+export default {
+    components: { Climate },
+    props: {
+        entry: {
+            type: Object,
+            required: true
         }
     }
+};
 </script>
 
 <style scoped lang="scss">

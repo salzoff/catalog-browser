@@ -21,7 +21,7 @@ export default {
         },
         selectedTourOperator: {
             type: String,
-            required: true
+            required: false
         }
     },
     methods: {
@@ -45,6 +45,6 @@ export default {
         cursor: pointer;
     }
     .item-selected {
-        background-color: #ccc;
+        border: 3px solid #ccc;
     }
 </style>

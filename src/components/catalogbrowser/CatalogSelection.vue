@@ -1,8 +1,8 @@
 <template>
     <div>
-        <strong v-if="cataloges.length > 0">{{ cataloges[0].TourOperatorName }}</strong>
+        <strong class="touropname" v-if="cataloges.length > 0">{{ cataloges[0].TourOperatorName }}</strong>
         <ul>
-            <li  v-for="(catalog, index) in cataloges" :key="`catalog-${index} in cataloges`" class="row mt-2">
+            <li  v-for="(catalog, index) in cataloges" :key="`catalog-${index} in cataloges`" class="row mt-2" :class="{ selected: catalog.CatalogHotelId === selectedCatalogHotelId }">
                 <catalog-item :catalog="catalog" @click="onClick(catalog)" />
             </li>
         </ul>
@@ -22,11 +22,15 @@
             selectedTourOperatorCode: {
                 type:String,
                 default: ''
+            },
+            selectedCatalogHotelId: {
+                type:String,
+                default: ''
             }
         },
         computed: {
             cataloges() {
-                if (this.selectedTourOperatorCode.length > 0) {
+                if (this.selectedTourOperatorCode) {
                     return this.entries.filter(entry => entry.TourOperatorCode === this.selectedTourOperatorCode);
                 }
                 return this.entries;
@@ -50,5 +54,11 @@
     }
     li {
         width: 100%;
+    }
+    li.selected {
+        border-right: 8px solid #999;
+    }
+    .touropname {
+        font-size: 1.4em;
     }
 </style>
