@@ -1,4 +1,6 @@
 .idea
 dist
 node_modules
-node_modules
+.firebaserc
+firebase.json
+.firebase

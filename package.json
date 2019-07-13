@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:component": "vue-cli-service build --target lib --name CatalogBrowser src/components/catalogbrowser/CatalogBrowser.vue",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
@@ -33,7 +34,7 @@
     "vue-template-compiler": "^2.5.17"
   },
   "description": "## Project setup ``` npm install ```",
-  "main": "src/main.js",
+  "main": "dist/CatalogBrowser.common.js",
   "directories": {
     "test": "tests"
   },
