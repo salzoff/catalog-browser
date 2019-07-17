@@ -1,3 +1,3 @@
 export default {
-    apiUrl: 'http://localhost:7070/'
+    apiUrl: process.env.VUE_APP_NBC_API_URL
 };
