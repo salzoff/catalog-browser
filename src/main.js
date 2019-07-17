@@ -5,6 +5,7 @@ import NBCclient from '@salzoff/nbcclient';
 import config from './config';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+console.log(config);
 Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
 Vue.prototype.$nbc = new NBCclient(config.apiUrl);

@@ -1,3 +1,3 @@
 export default {
-    apiUrl: 'https://still-scrubland-41395.herokuapp.com/'
+    apiUrl: 'http://localhost:7070/'
 };
